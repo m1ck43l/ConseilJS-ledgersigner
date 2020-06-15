@@ -20,7 +20,7 @@ export class LedgerSigner implements Signer {
      * @param derivationPath BIP44 Derivation Path
      * @param watermarkedOpInHex Operation
      */
-    public async sign(bytes: Buffer): Promise<Buffer> {
+    public async signOperation(bytes: Buffer): Promise<Buffer> {
         const result = await this.connector.signOperation(this.derivationPath, bytes);
         const signatureBytes = Buffer.from(result, 'hex');
 
