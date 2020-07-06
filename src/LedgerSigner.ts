@@ -28,9 +28,9 @@ export class LedgerSigner implements Signer {
     }
 
     /**
-     * Signs arbitrary text using Ledger devices.
+     * Signs arbitrary text using a Ledger device.
      * 
-     * @param message UTF-8 test.
+     * @param message Plain text of the message in UTF-8 encoding.
      * @returns {Promise<string>} base58check-encoded signature prefixed with 'edsig'.
      */
     public async signText(message: string): Promise<string> {
@@ -38,5 +38,20 @@ export class LedgerSigner implements Signer {
         const messageSig = Buffer.from(result, 'hex');
 
         return TezosMessageUtils.readSignatureWithHint(messageSig, 'edsig');
+    }
+
+    /**
+     * Convenience function that uses Tezos nomenclature to sign arbitrary text on a Ledger device. This method produces a 32-byte blake2s hash prior to signing.
+     * 
+     * @param message Plain text of the message in UTF-8 encoding. 
+     * @returns {Promise<string>} base58check-encoded signature prefixed with `edsig`.
+     */
+    public async signTextHash(message: string): Promise<string> {
+        const messageHash = TezosMessageUtils.simpleHash(Buffer.from(message, 'utf8'), 32);
+        const result = await this.connector.signHex(this.derivationPath, messageHash);
+        const messageSig = Buffer.from(result, 'hex');
+
+        return TezosMessageUtils.readSignatureWithHint(messageSig, 'edsig');
+
     }
 }

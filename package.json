@@ -1,6 +1,6 @@
 {
   "name": "conseiljs-ledgersigner",
-  "version": "5.0.2-beta.1",
+  "version": "5.0.2-beta.2",
   "description": "ConseilJS Ledger device plugin for ConseilJS-core. Supports the ED25519 curve via libsodium for tz1-address operations.",
   "browser": "dist/index.js",
   "main": "dist/index.js",
@@ -64,7 +64,7 @@
     "@ledgerhq/hw-transport": "5.15.0",
     "@ledgerhq/hw-transport-node-hid": "5.16.0",
     "bip32-path": "0.4.2",
-    "conseiljs": "5.0.2-beta.2"
+    "conseiljs": "5.0.2-beta.3"
   },
   "devDependencies": {
     "@types/chai": "4.2.11",
