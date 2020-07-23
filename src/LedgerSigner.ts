@@ -1,4 +1,4 @@
-import { Signer, TezosMessageUtils } from 'conseiljs';
+import { Signer, SignerCurve, TezosMessageUtils } from 'conseiljs';
 
 import { TezosLedgerConnector } from './TezosLedgerConnector'
 
@@ -12,6 +12,10 @@ export class LedgerSigner implements Signer {
     constructor(connector: TezosLedgerConnector, derivationPath: string) {
         this.connector = connector;
         this.derivationPath = derivationPath;
+    }
+
+    public getSignerCurve(): SignerCurve {
+        return SignerCurve.ED25519
     }
 
     /**
