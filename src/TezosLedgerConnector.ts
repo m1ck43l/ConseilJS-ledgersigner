@@ -1,4 +1,4 @@
-import Transport from '@ledgerhq/hw-transport-node-hid';
+import Transport from '@ledgerhq/hw-transport-u2f';
 import * as bip32path from 'bip32-path';
 
 export enum Curve { // taken from https://github.com/obsidiansystems/ledger-app-tezos/blob/master/APDUs.md
